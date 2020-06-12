@@ -44,9 +44,19 @@ Resources:
               AWS:
                 - "*"
 Outputs:
-  resbucketurl:
-    Description: URL for Resource Bucket
-    Value: !GetAtt resbucket.WebsiteURL
-  selfservebucketURL:
-    Description: URL for Self Service Portal
-    Value: !GetAtt selfservebucket.WebsiteURL
+  TemplateURL:
+    Description: TemplateURL for use in support.html
+    Value: !Sub http://${resbucket}.s3.amazonaws.com/wp-110-Linux1-distro.yaml
+  resourcebucket:
+    Description: S3 location to copy wp-110-Linux1-distro.yaml to
+    Value: !Sub s3://${resbucket}
+  selfservebucket:
+    Description: S3 location for the self-serve bucket
+    Value: !Sub s3://${selfservebucket}
+  selfserveURL:
+    Description: URL of self-serve page
+    Value: !Sub ${selfservebucket.WebsiteURL}/self-serve.html
+  supportURL:
+    Description: URL of support page
+    Value: !Sub ${selfservebucket.WebsiteURL}/support.html
+    

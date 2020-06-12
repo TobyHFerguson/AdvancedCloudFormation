@@ -6,15 +6,22 @@ All scripting runs from the 110 directory
 aws cloudformation create-stack --template-body file://Business/provisioningbuckets.yaml --stack-name whibuckets
 ```
 That gave me two output links:
+```bash
+aws cloudformation describe-stacks --stack-name whibuckets --output yaml --query Stacks[*].Outputs[*]
+```
+
 ```yaml
-  Outputs:
-  - Description: URL for Resource Bucket
+- - Description: TemplateURL for use in support.html
     OutputKey: resbucketurl
-    OutputValue: http://whibuckets-resbucket-1n126tfxx7fea.s3-website-us-east-1.amazonaws.com
+    OutputValue: http://whibuckets-resbucket-1n126tfxx7fea.s3.amazonaws.com/wp-110-Linux1-distro.yaml
   - Description: URL for Self Service Portal
     OutputKey: selfservebucketURL
     OutputValue: http://whibuckets-selfservebucket-of3tzclmylm1.s3-website-us-east-1.amazonaws.com
+  - Description: S3 location to copy wp-110-Linux1-distro.yaml to
+    OutputKey: resbucket
+    OutputValue: s3://whibuckets-resbucket-1n126tfxx7fea
 ```
+
 ### Configure Google Authentication
  * Go to https://console.developers.google.com/projectselector/apis/library?pli=1
  * Create a new project
@@ -154,7 +161,7 @@ Stacks:
 #### Support users web page
 Support users will be using `support.html` web page. Instead of authenticating them we're just going to hard code their credentials into the web page.
 
-We're also going to add the region, the arn that will be used to deploy the wordpress template as well as the template URL for that template. 
+We're also going to add the region, the arn that will be used to deploy the wordpress template as well as the TemplateURL for that template (the TemplateURL was output as part of the provisioningbuckets stack). 
 
 Copy that file to the selfserve bucket:
 
