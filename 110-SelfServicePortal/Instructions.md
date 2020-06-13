@@ -133,10 +133,10 @@ Stacks:
   Outputs:
   - Description: Support Secret Access Key
     OutputKey: adminsecretkey
-    OutputValue: ***REMOVED***
+    OutputValue: XXXX
   - Description: Support Access Key ID
     OutputKey: adminakid
-    OutputValue: ***REMOVED***
+    OutputValue: XXXX
   RollbackConfiguration: {}
   StackId: arn:aws:cloudformation:us-east-1:406319049568:stack/whi-support/a2bff790-acd6-11ea-9d98-1246411399d1
   StackName: whi-support
