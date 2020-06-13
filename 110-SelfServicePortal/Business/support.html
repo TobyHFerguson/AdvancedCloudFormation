@@ -3,10 +3,8 @@
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.6.10.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript">
-    // AWS.config.update({accessKeyId: 'SUPPORTAKID-CHANGEME', secretAccessKey: 'SUPPORTSECRET-CHANGEME'});
-    // AWS.config.region = '';
-    AWS.config.update({accessKeyId: 'AKIAV5GUAVNQP4VPEJRT', secretAccessKey: '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'});
-    AWS.config.region = 'us-east-1';
+    AWS.config.update({accessKeyId: 'SUPPORTAKID-CHANGEME', secretAccessKey: 'SUPPORTSECRET-CHANGEME'});
+    AWS.config.region = '';
   </script>
   <head>
     <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
@@ -28,13 +26,12 @@
           var cloudformation = new AWS.CloudFormation();
           var param = {
             StackName: stackname,
-            RoleARN: 'arn:aws:iam::406319049568:role/whi-stack-role-iamrole-11LQKHQ0PFOXP',
+            RoleARN: stackrole // whi-stack-role arn
             Parameters: [
               {ParameterKey: 'EnvironmentSize', ParameterValue: envsize, UsePreviousValue: false}
             ],
             OnFailure: 'DO_NOTHING',
-//            TemplateURL: 'https://RESOURCEBUCKET-CHANGEME/wp.yaml'
-              TemplateURL: 'https://whibuckets-resbucket-1n126tfxx7fea.s3.amazonaws.com/wp-110-Linux1-distro.yaml'
+              TemplateURL: 'https://RESOURCEBUCKET-CHANGEME/wp.yaml'
         };
 	  console.log(AWS.config);
           console.log(param);
