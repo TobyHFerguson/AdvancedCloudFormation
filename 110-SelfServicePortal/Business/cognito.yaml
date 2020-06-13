@@ -1,0 +1,18 @@
+Parameters:
+  GoogleClientId:
+    Type: String
+    Description: Google Client Id for the project used to login
+Resources:
+  cognito:
+    Type: AWS::Cognito::IdentityPool
+    Properties:
+      AllowUnauthenticatedIdentities: false
+      IdentityPoolName: My Identity Pool
+      SupportedLoginProviders:
+        "accounts.google.com": !Ref GoogleClientId
+  IdentityPoolRoleAttachment: 
+    Type: AWS::Cognito::IdentityPoolRoleAttachment 
+    Properties: 
+      IdentityPoolId: !Ref cognito
+      Roles: 
+        "authenticated": Fn::ImportValue whicustomerarn

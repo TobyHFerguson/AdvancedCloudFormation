@@ -145,6 +145,28 @@ Stacks:
 ```
 
 ### Set up cognito
+#### With CloudFormation
+Use the GoogleClientId parameter to create the cognito pool
+
+```bash
+aws cloudformation create-stack --template-body file://Business/cognito.yaml --stack-name cognito --parameters ParameterKey=GoogleClientId,ParameterValue=816410849714-h28vm7l44b2h1gahem0fhlm3rttolj2g.apps.googleusercontent.com
+```
+Currently this results in a permissions error:
+
+```
+Access to Role 'Fn::ImportValue whicustomerarn' is forbidden. (Service: AmazonCognitoIdentity; Status Code: 400; Error Code: NotAuthorizedException; Request ID: ea158baf-b218-407a-9d0a-69c132e1b9bd)
+```
+When trying to create the IdentityPoolRoleAttachment.
+
+I should come back to this and try to figure it out, maybe using the command line, similar to this:
+
+```bash
+aws cognito-identity create-identity-pool --identity-pool-name CIP --no-allow-unauthenticated-identities --supported-login-providers accounts.google.com=816410849714-h28vm7l44b2h1gahem0fhlm3rttolj2g.apps.googleusercontent.com
+
+aws cognito-identity set-identity-pool-roles --identity-pool-id us-east-1:947c7091-8ba7-4ec7-8622-32d31e98261e --roles authenticated=arn:aws:iam::406319049568:role/whi-customer-iamrole-RSB4WC6XLL0U
+```
+
+#### Manual Method
 * select the cognito service
 * select Manage Identity Pools
 * Choose 'WHI Identity Pool' for the pool name

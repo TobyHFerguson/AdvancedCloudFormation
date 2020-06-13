@@ -65,3 +65,5 @@ Outputs:
   customerrole:
     Description: Customer Role arn
     Value: !GetAtt iamrole.Arn
+    Export:
+      Name: whicustomerarn
