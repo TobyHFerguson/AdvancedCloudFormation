@@ -94,13 +94,13 @@ Stacks:
   Outputs:
   - Description: Customer Access Key ID
     OutputKey: customerakid
-    OutputValue: AKIAV5GUAVNQMVYLBKRT
+    OutputValue: ****
   - Description: Customer Role arn
     OutputKey: customerrole
     OutputValue: arn:aws:iam::406319049568:role/whi-customer-iamrole-RSB4WC6XLL0U
   - Description: Customer Secret Access Key
     OutputKey: customersecretkey
-    OutputValue: L35OthVzEhstTM81nRbyg7BkbCc2SyUdvgQKMVyu
+    OutputValue: ****
   RollbackConfiguration: {}
   StackId: arn:aws:cloudformation:us-east-1:406319049568:stack/whi-customer/e5012350-acd5-11ea-a349-126bf0867249
   StackName: whi-customer
@@ -133,10 +133,10 @@ Stacks:
   Outputs:
   - Description: Support Secret Access Key
     OutputKey: adminsecretkey
-    OutputValue: S1av6ovFN36d6SD81pci7GNs7+K1TE9NVzT/u4Hu
+    OutputValue: XXXX
   - Description: Support Access Key ID
     OutputKey: adminakid
-    OutputValue: AKIAV5GUAVNQP4VPEJRT
+    OutputValue: XXXX
   RollbackConfiguration: {}
   StackId: arn:aws:cloudformation:us-east-1:406319049568:stack/whi-support/a2bff790-acd6-11ea-9d98-1246411399d1
   StackName: whi-support
